@@ -174,6 +174,13 @@ static void test_redis_parse_req_success(void) {
     test_redis_parse_req_success_case("*5\r\n$7\r\npfmerge\r\n$7\r\n{pfoo}3\r\n$1\r\n2\r\n$6\r\n{pfoo}\r\n$7\r\n{pfoo}2\r\n", MSG_REQ_REDIS_PFMERGE);
     test_redis_parse_req_success_case("*1\r\n$4\r\nPING\r\n", MSG_REQ_REDIS_PING);
     test_redis_parse_req_success_case("*4\r\n$6\r\npsetex\r\n$3\r\nfoo\r\n$4\r\n1000\r\n$3\r\noof\r\n", MSG_REQ_REDIS_PSETEX);
+    test_redis_parse_req_success_case("*2\r\n$4\r\ninfo\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_INFO);
+    test_redis_parse_req_success_case("*2\r\n$6\r\nclient\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_CLIENT);
+    test_redis_parse_req_success_case("*2\r\n$6\r\nmodule\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_MODULE);
+    test_redis_parse_req_success_case("*2\r\n$6\r\nconfig\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_CONFIG);
+    test_redis_parse_req_success_case("*2\r\n$4\r\nscan\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_SCAN);
+    test_redis_parse_req_success_case("*2\r\n$6\r\nmemory\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_MEMORY);
+    test_redis_parse_req_success_case("*1\r\n$6\r\ndbsize\r\n", MSG_REQ_REDIS_DBSIZE);
     test_redis_parse_req_success_case("*2\r\n$4\r\npttl\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_PTTL);
     test_redis_parse_req_success_case("*4\r\n$7\r\nrestore\r\n$3\r\nfoo\r\n$1\r\n0\r\n$3\r\noof\r\n", MSG_REQ_REDIS_RESTORE);
     test_redis_parse_req_success_case("*2\r\n$4\r\nrpop\r\n$4\r\nlfoo\r\n", MSG_REQ_REDIS_RPOP);

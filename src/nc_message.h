@@ -73,6 +73,13 @@ typedef enum msg_parse_result {
     ACTION( REQ_REDIS_PEXPIRE )                                                                     \
     ACTION( REQ_REDIS_PEXPIREAT )                                                                   \
     ACTION( REQ_REDIS_PERSIST )                                                                     \
+    ACTION( REQ_REDIS_INFO )                                                                        \
+    ACTION( REQ_REDIS_CLIENT )                                                                      \
+    ACTION( REQ_REDIS_MODULE )                                                                      \
+    ACTION( REQ_REDIS_CONFIG )                                                                      \
+    ACTION( REQ_REDIS_SCAN )                                                                        \
+    ACTION( REQ_REDIS_DBSIZE )                                                                      \
+    ACTION( REQ_REDIS_MEMORY )                                                                      \
     ACTION( REQ_REDIS_PTTL )                                                                        \
     ACTION( REQ_REDIS_SORT )                                                                        \
     ACTION( REQ_REDIS_TOUCH )                                                                       \

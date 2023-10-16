@@ -226,6 +226,8 @@ const KEY1_ARGN = [
     'GEOSEARCH',
 
     'RESTORE',
+
+    'SCAN'
 ];
 
 const EXPECTED_MAPS = [

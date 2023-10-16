@@ -47,6 +47,7 @@ redis_argz(const struct msg *r)
     case MSG_REQ_REDIS_PING:
     case MSG_REQ_REDIS_QUIT:
     case MSG_REQ_REDIS_COMMAND:
+    case MSG_REQ_REDIS_DBSIZE:
         return true;
 
     default:
@@ -283,6 +284,14 @@ redis_argn(const struct msg *r)
     case MSG_REQ_REDIS_GEOSEARCHSTORE:
 
     case MSG_REQ_REDIS_RESTORE:
+
+    case MSG_REQ_REDIS_INFO:
+    case MSG_REQ_REDIS_CLIENT:
+    case MSG_REQ_REDIS_MODULE:
+    case MSG_REQ_REDIS_CONFIG:
+    case MSG_REQ_REDIS_SCAN:
+    case MSG_REQ_REDIS_MEMORY:
+
         return true;
 
     default:
@@ -357,6 +366,7 @@ redis_nokey(const struct msg *r)
 {
     switch (r->type) {
     case MSG_REQ_REDIS_LOLWUT:
+    case MSG_REQ_REDIS_INFO:
         return true;
 
     default:
@@ -602,6 +612,16 @@ redis_parse_req(struct msg *r)
                 break;
 
             case 4:
+                if (str4icmp(m, 'i', 'n', 'f', 'o')) {
+                    r->type = MSG_REQ_REDIS_INFO;
+                    break;
+                }
+
+                if (str4icmp(m, 's', 'c', 'a', 'n')) {
+                    r->type = MSG_REQ_REDIS_SCAN;
+                    break;
+                }
+
                 if (str4icmp(m, 'p', 't', 't', 'l')) {
                     r->type = MSG_REQ_REDIS_PTTL;
                     break;
@@ -866,8 +886,33 @@ redis_parse_req(struct msg *r)
                 break;
 
             case 6:
+                if (str6icmp(m, 'c', 'l', 'i', 'e', 'n', 't')) {
+                    r->type = MSG_REQ_REDIS_CLIENT;
+                    break;
+                }
+
+                if (str6icmp(m, 'm', 'o', 'd', 'u', 'l', 'e')) {
+                    r->type = MSG_REQ_REDIS_MODULE;
+                    break;
+                }
+
+                if (str6icmp(m, 'c', 'o', 'n', 'f', 'i', 'g')) {
+                    r->type = MSG_REQ_REDIS_CONFIG;
+                    break;
+                }
+
                 if (str6icmp(m, 'a', 'p', 'p', 'e', 'n', 'd')) {
                     r->type = MSG_REQ_REDIS_APPEND;
+                    break;
+                }
+
+                if (str6icmp(m, 'd', 'b', 's', 'i', 'z', 'e')) {
+                    r->type = MSG_REQ_REDIS_DBSIZE;
+                    break;
+                }
+
+                if (str6icmp(m, 'm', 'e', 'm', 'o', 'r', 'y')) {
+                    r->type = MSG_REQ_REDIS_MEMORY;
                     break;
                 }
 

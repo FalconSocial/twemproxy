@@ -55,6 +55,27 @@ printf '\nrestore\n'
 printf '*2\r\n$3\r\ndel\r\n$3\r\nfoo\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
 printf '*4\r\n$7\r\nrestore\r\n$3\r\nfoo\r\n$1\r\n0\r\n$3\r\noof\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
 
+printf '\ninfo\n'
+printf '*2\r\n$4\r\ninfo\r\n$3\r\nfoo\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
+
+printf '\nclient\n'
+printf '*2\r\n$6\r\nclient\r\n$3\r\nfoo\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
+
+printf '\nmodule\n'
+printf '*2\r\n$6\r\nmodule\r\n$3\r\nfoo\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
+
+printf '\nconfig\n'
+printf '*2\r\n$6\r\nconfig\r\n$3\r\nfoo\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
+
+printf '\nscan\n'
+printf '*2\r\n$4\r\nscan\r\n$3\r\nfoo\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
+
+printf '\ndbsize\n'
+printf '*1\r\n$6\r\ndbsize\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
+
+printf '\nmemory\n'
+printf '*2\r\n$6\r\nmemory\r\n$3\r\nfoo\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
+
 printf '\npttl\n'
 printf '*2\r\n$4\r\npttl\r\n$3\r\nfoo\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
 printf '*3\r\n$3\r\nset\r\n$3\r\nfoo\r\n$3\r\noof\r\n' | socat ${debug} ${timeout} - TCP:localhost:${port},shut-close
