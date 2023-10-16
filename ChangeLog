@@ -1,3 +1,11 @@
+ 2023-16-10  Mihail Nikolov  <micobg@gmail.com>
+    * twemproxy: version 0.5.1 release
+	  Same as 0.5.1-RC1
+
+ 2023-16-10  Mihail Nikolov  <micobg@gmail.com>
+    * twemproxy: version 0.5.1-RC1 release
+	  Add support for the following commands: INFO, CLIENT, MODULE, CONFIG, SCAN, DBSIZE,, MEMORY
+
  2021-13-07  Tyson Andre  <tysonandre775@hotmail.com>
     * twemproxy: version 0.5.0 release
 	  Same as 0.5.0-RC1

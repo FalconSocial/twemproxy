@@ -4,13 +4,13 @@
 
 ## Build
 
-To build twemproxy 0.5.0+ from [distribution tarball](https://github.com/twitter/twemproxy/releases):
+To build twemproxy 0.5.1+ from [distribution tarball](https://github.com/FalconSocial/twemproxy/releases):
 
     $ ./configure
     $ make
     $ sudo make install
 
-To build twemproxy 0.5.0+ from [distribution tarball](https://github.com/twitter/twemproxy/releases) in _debug mode_:
+To build twemproxy 0.5.1+ from [distribution tarball](https://github.com/FalconSocial/twemproxy/releases) in _debug mode_:
 
     $ CFLAGS="-ggdb3 -O0" ./configure --enable-debug=full
     $ make
