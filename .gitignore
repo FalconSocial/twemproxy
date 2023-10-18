@@ -74,3 +74,5 @@ test_all
 *.trs
 tags
 
+# IDEs
+.idea/

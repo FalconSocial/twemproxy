@@ -72,7 +72,7 @@ fi
 
 * Tue Oct 16 2023 Mihail Nikolov  <micobg@gmail.com>
 - twemproxy: version 0.5.1-RC1 release
-- Add support for the following commands: INFO, CLIENT, MODULE, CONFIG, SCAN, DBSIZE,, MEMORY
+- Add support for the following commands: INFO, CLIENT, MODULE, CONFIG, SCAN, DBSIZE, MEMORY
 
 * Tue Jul 06 2021 Tyson Andre  <tysonandre775@hotmail.com>
 - twemproxy: version 0.5.0 release
