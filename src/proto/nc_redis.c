@@ -285,6 +285,7 @@ redis_argn(const struct msg *r)
 
     case MSG_REQ_REDIS_RESTORE:
 
+    case MSG_REQ_REDIS_HELLO:
     case MSG_REQ_REDIS_INFO:
     case MSG_REQ_REDIS_CLIENT:
     case MSG_REQ_REDIS_MODULE:
@@ -366,6 +367,7 @@ redis_nokey(const struct msg *r)
 {
     switch (r->type) {
     case MSG_REQ_REDIS_LOLWUT:
+    case MSG_REQ_REDIS_HELLO:
     case MSG_REQ_REDIS_INFO:
         return true;
 
@@ -773,6 +775,11 @@ redis_parse_req(struct msg *r)
                 break;
 
             case 5:
+                if (str5icmp(m, 'h', 'e', 'l', 'l', 'o')) {
+                    r->type = MSG_REQ_REDIS_HELLO;
+                    break;
+                }
+
                 if (str5icmp(m, 'h', 'k', 'e', 'y', 's')) {
                     r->type = MSG_REQ_REDIS_HKEYS;
                     break;
@@ -1678,14 +1685,14 @@ redis_parse_req(struct msg *r)
 
             m = p + r->rlen;
             if (m >= b->last) {
-                /* 
+                /*
                  * For EVAL/EVALHASH, the r->token has been assigned a value.  When
-                 * m >= b->last happens will need to repair mbuf.  
-                 * 
+                 * m >= b->last happens will need to repair mbuf.
+                 *
                  * At the end of redis_parse_req, r->token will be used to choose
                  * the start (p) for the next call to redis_parse_req and clear
                  * r->token when repairing this and adding more data.
-                 * 
+                 *
                  * So, only when r->token == NULL we need to calculate r->rlen again.
                  */
                 if (r->token == NULL) {

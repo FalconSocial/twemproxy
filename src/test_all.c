@@ -174,6 +174,7 @@ static void test_redis_parse_req_success(void) {
     test_redis_parse_req_success_case("*5\r\n$7\r\npfmerge\r\n$7\r\n{pfoo}3\r\n$1\r\n2\r\n$6\r\n{pfoo}\r\n$7\r\n{pfoo}2\r\n", MSG_REQ_REDIS_PFMERGE);
     test_redis_parse_req_success_case("*1\r\n$4\r\nPING\r\n", MSG_REQ_REDIS_PING);
     test_redis_parse_req_success_case("*4\r\n$6\r\npsetex\r\n$3\r\nfoo\r\n$4\r\n1000\r\n$3\r\noof\r\n", MSG_REQ_REDIS_PSETEX);
+    test_redis_parse_req_success_case("*2\r\n$5\r\nhello\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_HELLO);
     test_redis_parse_req_success_case("*2\r\n$4\r\ninfo\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_INFO);
     test_redis_parse_req_success_case("*2\r\n$6\r\nclient\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_CLIENT);
     test_redis_parse_req_success_case("*2\r\n$6\r\nmodule\r\n$3\r\nfoo\r\n", MSG_REQ_REDIS_MODULE);
